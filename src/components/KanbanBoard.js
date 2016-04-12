@@ -1,6 +1,7 @@
 /* @flow */
 import React, {Component, PropTypes} from 'react';
 import List from './List';
+import 'styles/styles.scss';
 
 export class KanbanBoard extends Component {
   static propTypes = {

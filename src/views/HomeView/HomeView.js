@@ -33,7 +33,7 @@ const cardList = [
       },
       {
         id: 4,
-        name: 'My own Experiments',
+        name: 'My own Experiments 2',
         done: false
       }
     ]
