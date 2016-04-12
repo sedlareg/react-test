@@ -16,7 +16,9 @@ export class List extends Component {
           id={card.id}
           title={card.title}
           description={card.description}
-          tasks={card.tasks} />;
+          tasks={card.tasks}
+          color={card.color}
+        />;
       }
     );
     return (

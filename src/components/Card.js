@@ -4,6 +4,7 @@ import CheckList from './CheckList';
 
 export class Card extends Component {
   static propTypes = {
+    color: PropTypes.string,
     description: PropTypes.string,
     id: PropTypes.number,
     tasks: PropTypes.array,
@@ -15,6 +16,11 @@ export class Card extends Component {
     this.state = {
       showDetails: false
     };
+    this.toggleDetails = ::this._toggleDetails;
+  };
+
+  _toggleDetails () {
+    this.setState({showDetails: !this.state.showDetails});
   };
 
   render () {
@@ -26,11 +32,22 @@ export class Card extends Component {
           <CheckList cardId={this.props.id} tasks={this.props.tasks}/>
         </div>);
     }
+
+    const sideColor = {
+      position: 'absolute',
+      zIndex: -1,
+      top: 0,
+      bottom: 0,
+      left: 0,
+      width: 8,
+      backgroundColor: this.props.color
+    };
+
     return (
       <div className='card'>
-        <div className={this.state.showDetails ? 'card__title--is-open' : 'card__title'} onClick={
-            () => this.setState({showDetails: !this.state.showDetails})
-          }>{this.props.title}</div>
+        <div style={sideColor} />
+        <div className={this.state.showDetails ? 'card__title--is-open' : 'card__title'}
+          onClick={this.toggleDetails}>{this.props.title}</div>
         {cardDetails}
       </div>
     );

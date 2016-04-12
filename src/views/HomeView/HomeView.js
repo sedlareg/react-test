@@ -5,35 +5,37 @@ import KanbanBoard from '../../components/KanbanBoard.js';
 const cardList = [
   {
     id: 1,
-    title: 'Read the book',
-    description: 'I should read the whole book',
+    title: 'Kinder glücklich machen',
+    description: 'Ich sollte die Kinder mit Geschenken überhäufen',
     status: 'in-progress',
+    color: '#BD8D31',
     tasks: []
   },
   {
     id: 2,
-    title: 'Write some code',
-    description: 'Code along with the samples in the book',
+    title: 'React Code Beispiele',
+    description: 'Üben, üben und üben...',
     status: 'todo',
+    color: '#3A7E28',
     tasks: [
       {
         id: 1,
-        name: 'ContactList Example',
+        name: 'Beispiel Kontaktliste',
         done: true
       },
       {
         id: 2,
-        name: 'Kanban Example',
+        name: 'Beispiel Blog',
         done: false
       },
       {
         id: 3,
-        name: 'My own Experiments',
+        name: 'Meine eigenen Experimente',
         done: false
       },
       {
         id: 4,
-        name: 'My own Experiments 2',
+        name: 'Noch mehr Experimente ',
         done: false
       }
     ]

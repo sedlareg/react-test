@@ -21,7 +21,7 @@ export class KanbanBoard extends Component {
         />
         <List
           id='in-progress'
-          title='In Progress'
+          title='In Bearbeitung'
           cards={
             this.props.cards.filter(
               (card) => card.status === 'in-progress'
@@ -29,7 +29,7 @@ export class KanbanBoard extends Component {
         />
         <List
           id='done'
-          title='Done'
+          title='Erledigt'
           cards={
             this.props.cards.filter(
               (card) => card.status === 'done'
