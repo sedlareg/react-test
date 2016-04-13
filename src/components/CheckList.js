@@ -5,7 +5,8 @@ import RaisedButton from 'material-ui/lib/raised-button';
 
 export class CheckList extends Component {
   static propTypes = {
-    tasks: PropTypes.array
+    cardId: PropTypes.number,
+    tasks: PropTypes.arrayOf(PropTypes.object)
   };
 
   render () {
@@ -42,6 +43,10 @@ export class CheckList extends Component {
     return (
       <div className='checklist'>
         {tasks}
+        <input
+          type='text'
+          className='checklist--add-task'
+          placeholder='Type then hit Enter to add a new task' />
       </div>
     );
   }

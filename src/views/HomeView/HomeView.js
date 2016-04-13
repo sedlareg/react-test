@@ -1,6 +1,6 @@
 /* @flow */
 import React, {Component} from 'react';
-import KanbanBoard from '../../components/KanbanBoard.js';
+import KanbanBoard from '../../components/KanbanBoard';
 
 const cardList = [
   {
@@ -39,6 +39,14 @@ const cardList = [
         done: false
       }
     ]
+  },
+  {
+    id: 3,
+    title: 'Ein Title mit einer wirklich sehr sehr langen Überschrift die eigentlich nicht hier stehen sollte...',
+    description: '---',
+    status: 'done',
+    color: '#CF34Co',
+    tasks: []
   }
 ];
 

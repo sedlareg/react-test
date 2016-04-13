@@ -5,7 +5,7 @@ import 'styles/styles.scss';
 
 export class KanbanBoard extends Component {
   static propTypes = {
-    cards: PropTypes.array.isRequired
+    cards: PropTypes.arrayOf(PropTypes.object)
   };
 
   render () {
