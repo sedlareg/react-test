@@ -5,8 +5,8 @@ import 'styles/styles.scss';
 
 export class List extends Component {
   static propTypes = {
-    cards: PropTypes.array,
-    title: PropTypes.string
+    cards: PropTypes.arrayOf(PropTypes.object),
+    title: PropTypes.string.isRequired
   };
 
   render () {
