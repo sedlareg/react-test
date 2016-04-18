@@ -1,35 +1,38 @@
 /* @flow */
 import React, {Component} from 'react';
 import ContactsApp from '../../components/ContactsApp';
-
-const contactList = [
-  {
-    name: 'Thomas Müller',
-    email: 't.mueller@web.de'
-  },
-  {
-    name: 'Geraldes Pereira',
-    email: 'geraldes@mooneye.de'
-  },
-  {
-    name: 'Milla Hulk',
-    email: 'milla.hulk@hotmail.com'
-  },
-  {
-    name: 'Jonna Godzilla',
-    email: 'jonna.godzilla@gmx.de'
-  },
-  {
-    name: 'Testname Awesome',
-    email: 'awesome@mooneye.de'
-  }
-];
+import 'whatwg-fetch';
 
 export class Contact extends Component {
+  constructor () {
+    super();
+    this.state = {
+      contacts: []
+    };
+  }
+
+  componentDidMount () {
+    fetch('./contacts.json')
+    .then(
+      (response) => response.json()
+    )
+    .then(
+      (responseData) => {
+        console.log(responseData);
+        this.setState({contacts: responseData});
+      }
+    )
+    .catch(
+      (error) => {
+        console.log('Error fetching and parsing data', error);
+      }
+    );
+  }
+
   render () {
     return (
       <div>
-        <ContactsApp contacts={contactList} />
+        <ContactsApp contacts={this.state.contacts} />
       </div>
     );
   }

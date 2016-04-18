@@ -1,60 +1,67 @@
 /* @flow */
 import React, {Component} from 'react';
 import KanbanBoard from '../../components/KanbanBoard';
+import 'whatwg-fetch';
 
-const cardList = [
-  {
-    id: 1,
-    title: 'Kinder glücklich machen',
-    description: 'Ich sollte die Kinder mit Geschenken überhäufen',
-    status: 'in-progress',
-    color: '#BD8D31',
-    tasks: []
-  },
-  {
-    id: 2,
-    title: 'React Code Beispiele',
-    description: 'Üben, üben und üben...',
-    status: 'todo',
-    color: '#3A7E28',
-    tasks: [
-      {
-        id: 1,
-        name: 'Beispiel Kontaktliste',
-        done: true
-      },
-      {
-        id: 2,
-        name: 'Beispiel Blog',
-        done: false
-      },
-      {
-        id: 3,
-        name: 'Meine eigenen Experimente',
-        done: false
-      },
-      {
-        id: 4,
-        name: 'Noch mehr Experimente ',
-        done: false
-      }
-    ]
-  },
-  {
-    id: 3,
-    title: 'Ein Title mit einer wirklich sehr sehr langen Überschrift die eigentlich nicht hier stehen sollte...',
-    description: '---',
-    status: 'done',
-    color: '#CF34Co',
-    tasks: []
-  }
-];
+const API_URL = 'http://kanbanapi.pro-react.com';
+const API_HEADERS = {
+  'Content-Type': 'application/json',
+  'Authorization': 'any-string-you-like'
+};
 
 export class HomeView extends Component {
+  constructor () {
+    super(...arguments);
+    this.state = {
+      cardList: []
+    };
+
+    this.addTask = ::this._addTask;
+    this.deleteTask = ::this._deleteTask;
+    this.toggleTask = ::this._toggleTask;
+  }
+
+  componentDidMount () {
+    fetch(API_URL + '/cards', {headers: API_HEADERS})
+      .then(
+        (response) => response.json()
+      )
+      .then(
+        (responseData) => {
+          console.log(responseData);
+          this.setState({cardList: responseData});
+        }
+      )
+      .catch(
+        (error) => {
+          console.log('Error fetching and parsing data', error);
+        }
+      );
+  }
+
+  _addTask (cardId, taskName) {
+    console.log('addTask');
+  }
+
+  _deleteTask (cardId, taskId, taskIndex) {
+    console.log('deleteTask');
+  }
+
+  _toggleTask (cardId, taskId, taskIndex) {
+    console.log('toggleTask');
+  }
+
   render () {
     return (
       <div>
-        <KanbanBoard cards={cardList} />
+        <KanbanBoard
+          cards={this.state.cardList}
+          taskCallbacks={{
+            toogle: this.toggleTask,
+            delete: this.deleteTask,
+            add: this.addTask
+          }}
+        />
       </div>
     );
   }

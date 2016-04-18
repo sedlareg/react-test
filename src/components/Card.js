@@ -18,6 +18,7 @@ export class Card extends Component {
     color: PropTypes.string,
     description: PropTypes.string,
     id: PropTypes.number,
+    taskCallbacks: PropTypes.object,
     tasks: PropTypes.arrayOf(PropTypes.object),
     title: titlePropType
   };
@@ -40,7 +41,11 @@ export class Card extends Component {
       cardDetails = (
         <div className='card__details'>
           {this.props.description}
-          <CheckList cardId={this.props.id} tasks={this.props.tasks}/>
+          <CheckList
+            cardId={this.props.id}
+            tasks={this.props.tasks}
+            taskCallbacks={this.props.taskCallbacks}
+          />
         </div>);
     }
 
