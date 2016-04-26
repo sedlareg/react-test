@@ -17,12 +17,16 @@ export class CheckList extends Component {
     this.checkInputKeyPress = ::this._checkInputKeyPress;
   }
 
-  _toogleTask () {
-    console.log('toogleTask');
+  _toogleTask (task, taskIndex) {
+    console.log(task.id);
+    console.log(taskIndex);
+    this.props.taskCallbacks.toggle(this.props.cardId, task.id, taskIndex);
   };
 
-  _removeTask () {
-    console.log('removeTask');
+  _removeTask (task, taskIndex) {
+    console.log(task.id);
+    console.log(taskIndex);
+    this.props.taskCallbacks.delete(this.props.cardId, task.id, taskIndex);
   };
 
   _checkInputKeyPress (evt) {
@@ -48,20 +52,22 @@ export class CheckList extends Component {
       }
     };
     const tasks = this.props.tasks.map(
-      (task, index) => (
-        <div key={index}
+      (task, taskIndex) => (
+        <div key={task.id}
           className='checklist__task'>
           <Checkbox
             label={''}
             style={styles.checkbox}
             defaultChecked={task.done}
-            onCheck={this.toogleTask}
+            onCheck={() => this.toogleTask(task, taskIndex)}
+            //onCheck={this.props.taskCallbacks.toggle.bind(null, this.props.cardId, task.id, taskIndex)}
           />
           <span style={styles.spanElement}>{task.name}</span>
           <RaisedButton
             label='Task entfernen'
             style={styles.link}
-            onMouseDown={this.removeTask}
+            onMouseDown={() => this.removeTask(task, taskIndex)}
+            //onMouseDown={this.props.taskCallbacks.delete.bind(null, this.props.cardId, task.id, taskIndex)}
           />
         </div>
       )
