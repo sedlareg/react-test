@@ -60,14 +60,14 @@ export class CheckList extends Component {
             style={styles.checkbox}
             defaultChecked={task.done}
             onCheck={() => this.toogleTask(task, taskIndex)}
-            //onCheck={this.props.taskCallbacks.toggle.bind(null, this.props.cardId, task.id, taskIndex)}
+            // onCheck={this.props.taskCallbacks.toggle.bind(null, this.props.cardId, task.id, taskIndex)}
           />
           <span style={styles.spanElement}>{task.name}</span>
           <RaisedButton
             label='Task entfernen'
             style={styles.link}
             onMouseDown={() => this.removeTask(task, taskIndex)}
-            //onMouseDown={this.props.taskCallbacks.delete.bind(null, this.props.cardId, task.id, taskIndex)}
+            // onMouseDown={this.props.taskCallbacks.delete.bind(null, this.props.cardId, task.id, taskIndex)}
           />
         </div>
       )
