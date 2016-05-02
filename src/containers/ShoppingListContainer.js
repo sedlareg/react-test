@@ -64,8 +64,8 @@ export class ShoppingListContainer extends Component {
           transitionName='example'
           transitionEnterTimeout={300}
           transitionLeaveTimeout={300}
-          transitionAppear={true}
-          transitionAppearTimeout={5000}>
+          transitionAppear
+          transitionAppearTimeout={300}>
           {shoppingItems}
         </ReactCSSTransitionGroup>
         <input type='text'
