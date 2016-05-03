@@ -124,35 +124,32 @@ input {
 .example-enter {
   opacity: 0;
   transform: translateX(-250px);
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: 0.3s;
+  &.example-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: 0.3s;
+  }
 }
 
 .example-leave {
   opacity: 1;
   transform: translateX(0);
-}
-
-.example-leave.example-leave-active {
-  opacity: 0;
-  transform: translateX(250px);
-  transition: 0.3s;
+  &.example-leave-active {
+    opacity: 0;
+    transform: translateX(250px);
+    transition: 0.3s;
+  }
 }
 
 .example-appear {
   opacity: 1;
   transform: translateX(-250px);
   transition: .3s ease-in;
-}
-
-.example-appear.example-appear-active {
-  opacity: 1;
-  transform: translateX(0);
-  //transition: 0.5s;
+  &.example-appear-active {
+    opacity: 1;
+    transform: translateX(0);
+    //transition: 0.5s;
+  }
 }
 
 .snack {
@@ -169,6 +166,7 @@ input {
   text-align: center;
   color: #333;
 }
+
 .shopping-cart {
   border: 5px dashed #d9d9d9;
   border-radius: 10px;
