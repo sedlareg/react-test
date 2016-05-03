@@ -1,6 +1,7 @@
 /* @flow */
 import React, {Component, PropTypes} from 'react';
 import CheckList from './CheckList';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const titlePropType = (props, propName, componentName) => {
   if (props[propName]) {
@@ -64,7 +65,12 @@ export class Card extends Component {
         <div style={sideColor} />
         <div className={this.state.showDetails ? 'card__title--is-open' : 'card__title'}
           onClick={this.toggleDetails}>{this.props.title}</div>
-        {cardDetails}
+        <ReactCSSTransitionGroup
+          transitionName='toggleCard'
+          transitionEnterTimeout={250}
+          transitionLeaveTimeout={250}>
+          {cardDetails}
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

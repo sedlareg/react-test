@@ -175,3 +175,23 @@ input {
   padding: 5rem 2rem;
   text-align: center;
 }
+
+.toggleCard-enter {
+  max-height: 0;
+  overflow: hidden;
+  &.toggleCard-enter-active {
+    max-height: 300px;
+    overflow: hidden;
+    transition: max-height .25s ease-in;
+  }
+}
+
+.toggleCard-leave {
+  max-height: 300px;
+  overflow: hidden;
+  &.toggleCard-leave-active {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease-out;
+  }
+}

@@ -60,6 +60,7 @@ export class CheckList extends Component {
             style={styles.checkbox}
             defaultChecked={task.done}
             onCheck={() => this.toogleTask(task, taskIndex)}
+            // onCheck={this.toogleTask.bind(null, task, taskIndex)}
             // onCheck={this.props.taskCallbacks.toggle.bind(null, this.props.cardId, task.id, taskIndex)}
           />
           <span style={styles.spanElement}>{task.name}</span>
@@ -67,6 +68,7 @@ export class CheckList extends Component {
             label='Task entfernen'
             style={styles.link}
             onMouseDown={() => this.removeTask(task, taskIndex)}
+            // onMouseDown={this.removeTask.bind(null, task, taskIndex)}
             // onMouseDown={this.props.taskCallbacks.delete.bind(null, this.props.cardId, task.id, taskIndex)}
           />
         </div>

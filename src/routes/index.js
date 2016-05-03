@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import CoreLayout from 'layouts/CoreLayout/CoreLayout';
-import HomeView from 'views/HomeView/HomeView';
-import Contact from 'views/Contact/Contact';
-import ShoppingList from 'views/ShoppingList/ShoppingList';
-import Snacks from 'views/Snacks/Snacks';
+import Home from 'views/HomeView/Home';
+import Contact from 'views/ContactView/Contact';
+import ShoppingList from 'views/ShoppingListView/ShoppingList';
+import Snacks from 'views/SnacksView/Snacks';
 
 export default (store) => (
   <Route path='/' component={CoreLayout}>
-    <IndexRoute component={HomeView} />
+    <IndexRoute component={Home} />
     <Route path='contact' component={Contact} />
     <Route path='shop' component={ShoppingList} />
     <Route path='snacks' component={Snacks} />

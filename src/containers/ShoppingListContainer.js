@@ -1,5 +1,5 @@
 /* @flow */
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import 'styles/styles.scss';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 

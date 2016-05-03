@@ -1,7 +1,7 @@
 /* @flow */
 import React, {Component} from 'react';
 import update from 'react-addons-update';
-import KanbanBoard from '../../components/KanbanBoard';
+import KanbanBoard from 'components/KanbanBoard';
 import 'whatwg-fetch';
 
 const API_URL = 'http://kanbanapi.pro-react.com';
@@ -10,7 +10,7 @@ const API_HEADERS = {
   'Authorization': 'any-string-you-like'
 };
 
-export class HomeView extends Component {
+export class KanbanBoardContainer extends Component {
   constructor () {
     super(...arguments);
     this.state = {
@@ -187,4 +187,4 @@ export class HomeView extends Component {
   }
 }
 
-export default HomeView;
+export default KanbanBoardContainer;
