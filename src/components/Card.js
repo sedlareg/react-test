@@ -2,6 +2,8 @@
 import React, {Component, PropTypes} from 'react';
 import CheckList from './CheckList';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {DragSource, DropTarget} from 'react-dnd';
+import Constants from './Constants';
 
 const titlePropType = (props, propName, componentName) => {
   if (props[propName]) {
@@ -14,9 +16,39 @@ const titlePropType = (props, propName, componentName) => {
   }
 };
 
-export class Card extends Component {
+const cardDragSpec = {
+  beginDrag(props) {
+    return {
+      id: props.id,
+      status: props.status
+    };
+  },
+  endDrag(props) {
+    props.cardCallbacks.persistCardDrag(props.id, props.status);
+  }
+};
+
+const cardDropSpec = {
+  hover(props, monitor) {
+    const draggedId = monitor.getItem().id;
+    props.cardCallbacks.updatePosition(draggedId, props.id);
+  }
+};
+
+let collectDrag = (connect, monitor) => {
+  return {connectDragSource: connect.dragSource()};
+};
+
+let collectDrop = (connect, monitor) => {
+  return {connectDropTarget: connect.dropTarget(),};
+};
+
+class Card extends Component {
   static propTypes = {
+    cardCallbacks: PropTypes.object,
     color: PropTypes.string,
+    connectDragSource: PropTypes.func.isRequired,
+    connectDropTarget: PropTypes.func.isRequired,
     description: PropTypes.string,
     id: PropTypes.number,
     taskCallbacks: PropTypes.object,
@@ -24,7 +56,7 @@ export class Card extends Component {
     title: titlePropType
   };
 
-  constructor () {
+  constructor() {
     super(...arguments);
     this.state = {
       showDetails: false
@@ -32,11 +64,12 @@ export class Card extends Component {
     this.toggleDetails = ::this._toggleDetails;
   };
 
-  _toggleDetails () {
+  _toggleDetails() {
     this.setState({showDetails: !this.state.showDetails});
   };
 
-  render () {
+  render() {
+    const {connectDragSource, connectDropTarget} = this.props;
     let cardDetails;
     if (this.state.showDetails) {
       cardDetails = (
@@ -60,11 +93,11 @@ export class Card extends Component {
       backgroundColor: this.props.color
     };
 
-    return (
+    return connectDropTarget(connectDragSource(
       <div className='card'>
-        <div style={sideColor} />
+        <div style={sideColor}/>
         <div className={this.state.showDetails ? 'card__title--is-open' : 'card__title'}
-          onClick={this.toggleDetails}>{this.props.title}</div>
+             onClick={this.toggleDetails}>{this.props.title}</div>
         <ReactCSSTransitionGroup
           transitionName='toggleCard'
           transitionEnterTimeout={250}
@@ -72,8 +105,10 @@ export class Card extends Component {
           {cardDetails}
         </ReactCSSTransitionGroup>
       </div>
-    );
+    ));
   }
 }
 
-export default Card;
+const dragHighOrderCard = DragSource(Constants.CARD, cardDragSpec, collectDrag)(Card);
+const dragDropHighOrderCard = DropTarget(Constants.CARD, cardDropSpec, collectDrop)(dragHighOrderCard);
+export default dragDropHighOrderCard
