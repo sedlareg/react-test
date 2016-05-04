@@ -17,19 +17,19 @@ const titlePropType = (props, propName, componentName) => {
 };
 
 const cardDragSpec = {
-  beginDrag(props) {
+  beginDrag (props) {
     return {
       id: props.id,
       status: props.status
     };
   },
-  endDrag(props) {
+  endDrag (props) {
     props.cardCallbacks.persistCardDrag(props.id, props.status);
   }
 };
 
 const cardDropSpec = {
-  hover(props, monitor) {
+  hover (props, monitor) {
     const draggedId = monitor.getItem().id;
     props.cardCallbacks.updatePosition(draggedId, props.id);
   }
@@ -40,7 +40,7 @@ let collectDrag = (connect, monitor) => {
 };
 
 let collectDrop = (connect, monitor) => {
-  return {connectDropTarget: connect.dropTarget(),};
+  return {connectDropTarget: connect.dropTarget()};
 };
 
 class Card extends Component {
@@ -56,7 +56,7 @@ class Card extends Component {
     title: titlePropType
   };
 
-  constructor() {
+  constructor () {
     super(...arguments);
     this.state = {
       showDetails: false
@@ -64,11 +64,11 @@ class Card extends Component {
     this.toggleDetails = ::this._toggleDetails;
   };
 
-  _toggleDetails() {
+  _toggleDetails () {
     this.setState({showDetails: !this.state.showDetails});
   };
 
-  render() {
+  render () {
     const {connectDragSource, connectDropTarget} = this.props;
     let cardDetails;
     if (this.state.showDetails) {
@@ -97,7 +97,8 @@ class Card extends Component {
       <div className='card'>
         <div style={sideColor}/>
         <div className={this.state.showDetails ? 'card__title--is-open' : 'card__title'}
-             onClick={this.toggleDetails}>{this.props.title}</div>
+          onClick={this.toggleDetails}>{this.props.title}
+        </div>
         <ReactCSSTransitionGroup
           transitionName='toggleCard'
           transitionEnterTimeout={250}
@@ -111,4 +112,4 @@ class Card extends Component {
 
 const dragHighOrderCard = DragSource(Constants.CARD, cardDragSpec, collectDrag)(Card);
 const dragDropHighOrderCard = DropTarget(Constants.CARD, cardDropSpec, collectDrop)(dragHighOrderCard);
-export default dragDropHighOrderCard
+export default dragDropHighOrderCard;

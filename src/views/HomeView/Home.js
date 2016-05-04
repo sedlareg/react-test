@@ -2,14 +2,14 @@
 import React, {Component} from 'react';
 import KanbanBoardContainer from '../../containers/KanbanBoardContainer';
 
-export class HomeView extends Component {
+export class Home extends Component {
   render () {
     return (
-      <div>
+      <div className='container'>
         <KanbanBoardContainer />
       </div>
     );
   }
 }
 
-export default HomeView;
+export default Home;

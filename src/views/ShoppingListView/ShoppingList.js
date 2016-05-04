@@ -5,7 +5,7 @@ import ShoppingListContainer from '../../containers/ShoppingListContainer';
 export class ShoppingList extends Component {
   render () {
     return (
-      <div>
+      <div className='container'>
         <ShoppingListContainer />
       </div>
     );

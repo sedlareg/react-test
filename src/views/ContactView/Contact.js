@@ -2,14 +2,14 @@
 import React, {Component} from 'react';
 import ContactContainer from '../../containers/ContactContainer';
 
-export class ContactView extends Component {
+export class Contact extends Component {
   render () {
     return (
-      <div>
+      <div className='container'>
         <ContactContainer />
       </div>
     );
   }
 }
 
-export default ContactView;
+export default Contact;

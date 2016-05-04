@@ -5,7 +5,7 @@ import SnacksContainer from '../../containers/SnacksContainer';
 export class Snacks extends Component {
   render () {
     return (
-      <div>
+      <div className='container'>
         <SnacksContainer />
       </div>
     );

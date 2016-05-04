@@ -11,7 +11,7 @@ const API_HEADERS = {
 };
 
 export class KanbanBoardContainer extends Component {
-  constructor() {
+  constructor () {
     super(...arguments);
     this.state = {
       cards: []
@@ -20,14 +20,14 @@ export class KanbanBoardContainer extends Component {
     this.addTask = ::this._addTask;
     this.deleteTask = ::this._deleteTask;
     this.toggleTask = ::this._toggleTask;
-    //this.updateCardStatus = ::this._updateCardStatus;
-    //this.updateCardPosition = ::this._updateCardPosition;
+    // this.updateCardStatus = ::this._updateCardStatus;
+    // this.updateCardPosition = ::this._updateCardPosition;
     this.updateCardStatus = throttle(::this._updateCardStatus);
     this.updateCardPosition = throttle(::this._updateCardPosition);
     this.persistCardDrag = ::this._persistCardDrag;
   }
 
-  componentDidMount() {
+  componentDidMount () {
     fetch(API_URL + '/cards', {headers: API_HEADERS})
       .then(
         (response) => response.json()
@@ -45,7 +45,7 @@ export class KanbanBoardContainer extends Component {
       );
   }
 
-  _addTask(cardId, taskName) {
+  _addTask (cardId, taskName) {
     // Keep a reference to the original state prior to the mutations
     // in case you need to revert the optimistic changes in the UI
     let prevState = this.state;
@@ -90,7 +90,7 @@ export class KanbanBoardContainer extends Component {
       });
   }
 
-  _deleteTask(cardId, taskId, taskIndex) {
+  _deleteTask (cardId, taskId, taskIndex) {
     // Find the index of the card
     let cardIndex = this.state.cards.findIndex((card) => card.id === cardId);
 
@@ -128,7 +128,7 @@ export class KanbanBoardContainer extends Component {
       });
   }
 
-  _toggleTask(cardId, taskId, taskIndex) {
+  _toggleTask (cardId, taskId, taskIndex) {
     // Keep a reference to the original state prior to the mutations
     // in case you need to revert the optimistic changes in the UI
     let prevState = this.state;
@@ -176,10 +176,10 @@ export class KanbanBoardContainer extends Component {
       });
   }
 
-  _updateCardStatus(cardId, listId) {
+  _updateCardStatus (cardId, listId) {
     console.log('updateCardStatus');
     // Find the index of the card
-    const cardIndex = this.state.cards.findIndex((card)=>card.id == cardId);
+    const cardIndex = this.state.cards.findIndex((card) => card.id === cardId);
     // Get the current card
     const card = this.state.cards[cardIndex];
     // Only proceed if hovering over a different list
@@ -199,16 +199,16 @@ export class KanbanBoardContainer extends Component {
     }
   }
 
-  _updateCardPosition (cardId , afterId) {
+  _updateCardPosition (cardId, afterId) {
     console.log('_updateCardPosition');
     // Only proceed if hovering over a different card
-    if(cardId !== afterId) {
+    if (cardId !== afterId) {
       // Find the index of the card
-      const cardIndex = this.state.cards.findIndex((card)=>card.id == cardId);
+      const cardIndex = this.state.cards.findIndex((card) => card.id === cardId);
       // Get the current card
       const card = this.state.cards[cardIndex];
       // Find the index of the card the user is hovering over
-      const afterIndex = this.state.cards.findIndex((card)=>card.id == afterId);
+      const afterIndex = this.state.cards.findIndex((card) => card.id === afterId);
       // Use splice to remove the card and reinsert it a the new index
       this.setState(update(this.state,
         {
@@ -224,9 +224,9 @@ export class KanbanBoardContainer extends Component {
 
   _persistCardDrag (cardId, status) {
     // Find the index of the card
-    const cardIndex = this.state.cards.findIndex((card)=>card.id == cardId);
+    const cardIndex = this.state.cards.findIndex((card) => card.id === cardId);
     // Get the current card
-    const card = this.state.cards[cardIndex]
+    const card = this.state.cards[cardIndex];
     fetch(`${API_URL}/cards/${cardId}`,
       {
         method: 'put',
@@ -235,15 +235,15 @@ export class KanbanBoardContainer extends Component {
       })
       .then((response) => {
         console.log(response);
-        if(!response.ok){
+        if (!response.ok) {
           // Throw an error if server response wasn't 'ok'
           // so you can revert back the optimistic changes
           // made to the UI.
-          throw new Error("Server response wasn't OK")
+          throw new Error("Server response wasn't OK");
         }
       })
       .catch((error) => {
-        console.error("Fetch error:",error);
+        console.error('Fetch error:', error);
         this.setState(update(this.state,
           {
             cards: {
@@ -258,7 +258,7 @@ export class KanbanBoardContainer extends Component {
       });
   }
 
-  render() {
+  render () {
     return (
       <div>
         <KanbanBoard

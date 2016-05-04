@@ -6,13 +6,13 @@ import {DropTarget} from 'react-dnd';
 import Constants from './Constants';
 
 const listTargetSpec = {
-  hover(props, monitor) {
+  hover (props, monitor) {
     const draggedId = monitor.getItem().id;
-    props.cardCallbacks.updateStatus(draggedId, props.id)
+    props.cardCallbacks.updateStatus(draggedId, props.id);
   }
 };
 
-function collect(connect, monitor) {
+function collect (connect, monitor) {
   return {connectDropTarget: connect.dropTarget()};
 };
 
@@ -25,7 +25,7 @@ class List extends Component {
     title: PropTypes.string.isRequired
   };
 
-  render() {
+  render () {
     const { connectDropTarget } = this.props;
     const cards = this.props.cards.map(
       (card, index) => {

@@ -5,6 +5,8 @@ import Home from 'views/HomeView/Home';
 import Contact from 'views/ContactView/Contact';
 import ShoppingList from 'views/ShoppingListView/ShoppingList';
 import Snacks from 'views/SnacksView/Snacks';
+import About from 'views/ReposView/About';
+import Repos from 'views/ReposView/Repos';
 
 export default (store) => (
   <Route path='/' component={CoreLayout}>
@@ -12,6 +14,8 @@ export default (store) => (
     <Route path='contact' component={Contact} />
     <Route path='shop' component={ShoppingList} />
     <Route path='snacks' component={Snacks} />
+    <Route path='about' component={About} />
+    <Route path='repos' component={Repos} />
   </Route>
 );
 //
