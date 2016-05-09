@@ -4,17 +4,26 @@ import List from './List';
 import 'styles/styles.scss';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import { Link } from 'react-router';
 
 class KanbanBoard extends Component {
   static propTypes = {
     cardCallbacks: PropTypes.object,
     cards: PropTypes.arrayOf(PropTypes.object),
-    taskCallbacks: PropTypes.object
+    taskCallbacks: PropTypes.object,
+    children: PropTypes.object
   };
 
   render () {
+    const cardModal = this.props.children && React.cloneElement(this.props.children,
+      {
+        cards: this.props.cards,
+        cardCallbacks: this.props.cardCallbacks
+      }
+    );
     return (
       <div className='app'>
+        <Link to='/board/new' className='float-button'>+</Link>
         <List
           taskCallbacks={this.props.taskCallbacks}
           cardCallbacks={this.props.cardCallbacks}
@@ -45,6 +54,7 @@ class KanbanBoard extends Component {
               (card) => card.status === 'done'
             )}
         />
+        {cardModal}
       </div>
     );
   }

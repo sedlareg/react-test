@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 class ReposContainer extends Component {
   static propTypes = {
-    children: PropTypes.object,
+    children: PropTypes.element,
     route: PropTypes.object
   };
   constructor () {
@@ -45,6 +45,7 @@ class ReposContainer extends Component {
 
     return (
       <div className='container'>
+        <h1>{this.props.route.title}</h1>
         <ul>
           {repos}
         </ul>
