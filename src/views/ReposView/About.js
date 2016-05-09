@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 class About extends Component {
+  static propTypes = {
+    route: PropTypes.object
+  };
   render () {
     return (
       <div className='container'>
-        <h1>ABOUT</h1>
+        <h1>{this.props.route.title}</h1>
       </div>
     );
   }
