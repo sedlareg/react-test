@@ -1,9 +1,6 @@
 /* @flow */
 import React, {Component, PropTypes} from 'react';
 import update from 'react-addons-update';
-import KanbanBoard from 'components/KanbanBoard';
-import NewCard from 'components/NewCard';
-import EditCard from 'components/EditCard';
 import 'whatwg-fetch';
 import {throttle} from 'helpers/utils';
 const API_URL = 'http://kanbanapi.pro-react.com';
@@ -363,19 +360,6 @@ class KanbanBoardContainer extends Component {
     return (
       <div className='container'>
         <h1>{this.props.route.title}</h1>
-        <KanbanBoard
-          cards={this.state.cards}
-          taskCallbacks={{
-            toggle: this.toggleTask,
-            delete: this.deleteTask,
-            add: this.addTask
-          }}
-          cardCallbacks={{
-            updateStatus: this.updateCardStatus,
-            updatePosition: this.updateCardPosition,
-            persistCardDrag: this.persistCardDrag
-          }}
-        />
         {kanbanBoard}
       </div>
     );

@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import CardForm from './CardForm';
+
 class EditCard extends Component {
   static propTypes = {
     cardCallbacks: PropTypes.object,
@@ -25,11 +26,11 @@ class EditCard extends Component {
   _handleSubmit (e) {
     e.preventDefault();
     this.props.cardCallbacks.updateCard(this.state);
-    this.props.history.pushState(null, '/');
+    this.props.history.pushState(null, '/board');
   }
 
   _handleClose (e) {
-    this.props.history.pushState(null, '/');
+    this.props.history.pushState(null, '/board');
   }
 
   render () {

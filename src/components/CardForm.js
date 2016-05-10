@@ -77,3 +77,4 @@ class CardForm extends Component {
     );
   }
 }
+export default CardForm;

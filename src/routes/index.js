@@ -8,6 +8,7 @@ import Snacks from 'views/SnacksView/Snacks';
 import About from 'views/ReposView/About';
 import KanbanBoardContainer from 'containers/KanbanBoardContainer';
 import ReposContainer from 'containers/ReposContainer';
+import KanbanBoard from 'components/KanbanBoard';
 import RepoDetails from 'components/RepoDetails';
 import ServerError from 'components/ServerError';
 import NewCard from 'components/NewCard';
@@ -16,10 +17,12 @@ import EditCard from 'components/EditCard';
 export default (store) => (
   <Route path='/' component={CoreLayout}>
     <IndexRoute component={Home} title='Home' />
-    <Route path='board' title='Kanban Board' component={KanbanBoardContainer}>
-      {/* Add the route, nested where we want the UI to nest */}
-      <Route path='/board/new' component={NewCard} />
-      <Route path='/board/edit/:card_id' component={EditCard} />
+    <Route title='Kanban Board' component={KanbanBoardContainer}>
+      <Route path='board' component={KanbanBoard}>
+        {/* Add the route, nested where we want the UI to nest */}
+        <Route path='new' component={NewCard} />
+        <Route path='edit/:card_id' component={EditCard} />
+      </Route>
     </Route>
     <Route path='contact' title='Contact' component={Contact} />
     <Route path='shop' title='Shopping List' component={ShoppingList} />

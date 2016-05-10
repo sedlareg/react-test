@@ -31,11 +31,11 @@ class NewCard extends Component {
   _handleSubmit (e) {
     e.preventDefault();
     this.props.cardCallbacks.addCard(this.state);
-    this.props.history.pushState(null, '/');
+    this.props.history.pushState(null, '/board');
   }
 
   _handleClose (e) {
-    this.props.history.pushState(null, '/');
+    this.props.history.pushState(null, '/board');
   }
 
   render () {

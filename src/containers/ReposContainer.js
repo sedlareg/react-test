@@ -33,6 +33,7 @@ class ReposContainer extends Component {
   }
 
   render () {
+    console.log(this.props.children);
     const repos = this.state.repositories.map((repo) => (
       <li key={repo.id}>
         <Link to={`/repo/${repo.name}`}>{repo.name}</Link>
