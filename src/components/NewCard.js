@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import CardForm from './CardForm';
+import 'styles/styles.scss';
 
 class NewCard extends Component {
   static propTypes = {

@@ -287,21 +287,21 @@ menu {
 .card.big {
   position: absolute;
   width: 640px;
-  height: 480px;
   margin: auto;
-  padding: 15px;
-  top: 0;
+  top: 1%;
   left: 0;
   bottom: 100px;
   right: 0;
   z-index: 3;
+  padding:35px 20px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
 }
 
 .card.big input[type=text], textarea {
-  width: 100%;
-  margin: 3px 0;
+  width: 88%;
+  margin: 0 0 10px 0;
   font-size: 13px;
-  border: none;
 }
 
 .card.big input[type=text] {
@@ -309,9 +309,44 @@ menu {
   font-weight: bold;
 }
 
-.card.big input[type=text]:focus, .card.big textarea:focus {
+.card.big textarea {
+  width: 88%;
+  height: 150px;
+  line-height: 150%;
+  resize:vertical;
+}
+
+.feedback-input {
+  color:#3c3c3c;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 0;
+  line-height: 22px;
+  background-color: #fbfbfb;
+  padding: 13px;
+  margin-bottom: 10px;
+  width:100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid lightgrey;
+  outline: none;
+}
+
+.feedback-input:hover {
   outline: dashed thin #999;
   outline-offset: 2px;
+}
+
+.feedback-input:focus{
+  box-shadow: 0;
+  border: 3px solid #3498db;
+  color: #3498db;
+  outline: dashed thin #999;
+  outline-offset: 2px;
+  padding: 13px;
 }
 
 .card.big label {
@@ -366,4 +401,22 @@ menu {
   font-size: 17px;
 }
 
+.icon {
+  display: inline-block;
+  width: 55px;
+  height: 32px;
+  position: relative;
+  top: 10px;
+  margin-right: 10px;
+}
 
+@media only screen and (max-width: 640px) {
+  .card.big{
+    left: 3%;
+    margin-right: 3%;
+    width: 88%;
+    margin-left: 0;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
