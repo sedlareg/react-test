@@ -30,6 +30,7 @@ class KanbanBoardContainer extends Component {
     this.updateCardPosition = throttle(::this._updateCardPosition);
     this.persistCardDrag = ::this._persistCardDrag;
     this.addCard = ::this._addCard;
+    this.updateCard = ::this._updateCard;
   }
 
   componentDidMount () {
@@ -184,7 +185,6 @@ class KanbanBoardContainer extends Component {
   }
 
   _updateCardStatus (cardId, listId) {
-    console.log('updateCardStatus');
     // Find the index of the card
     const cardIndex = this.state.cards.findIndex((card) => card.id === cardId);
     // Get the current card
@@ -207,7 +207,6 @@ class KanbanBoardContainer extends Component {
   }
 
   _updateCardPosition (cardId, afterId) {
-    console.log('_updateCardPosition');
     // Only proceed if hovering over a different card
     if (cardId !== afterId) {
       // Find the index of the card

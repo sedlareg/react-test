@@ -27,9 +27,8 @@ class CardForm extends Component {
     this.props.handleSubmit(e);
   }
 
-  _handleChange (e, field) {
-    console.log(field, e);
-    this.props.handleChange(field, e.target.value);
+  _handleChange (event, field) {
+    this.props.handleChange(field, event.target.value);
   }
 
   _handleClose (e) {
@@ -47,7 +46,7 @@ class CardForm extends Component {
               <input type='text'
                 className='feedback-input'
                 value={this.props.draftCard.title}
-                onChange={() => this.handleChange(this, 'title')}
+                onChange={(event) => this.handleChange(event, 'title')}
                 placeholder='Title'
                 required
                 autoFocus />
@@ -56,7 +55,7 @@ class CardForm extends Component {
               <Icon icon='file-text' viewbox='0 50 32 32' />
               <textarea value={this.props.draftCard.description}
                 className='feedback-input'
-                onChange={() => this.handleChange(this, 'description')}
+                onChange={(event) => this.handleChange(event, 'description')}
                 placeholder='Description'
                 required />
             </div>
@@ -64,7 +63,7 @@ class CardForm extends Component {
               <Icon icon='priority_high' viewbox='0 0 52 52'/>
               <select id='status'
                 value={this.props.draftCard.status}
-                onChange={() => this.handleChange(this, 'status')}>
+                onChange={(event) => this.handleChange(event, 'status')}>
                 <option value='todo'>To Do</option>
                 <option value='in-progress'>In Progress</option>
                 <option value='done'>Done</option>
@@ -74,7 +73,7 @@ class CardForm extends Component {
               <Icon icon='droplet' viewbox='0 0 48 48'/>
               <input id='color'
                 value={this.props.draftCard.color}
-                onChange={() => this.handleChange(this, 'color')}
+                onChange={(event) => this.handleChange(event, 'color')}
                 type='color'
                 defaultValue='#ff0000'/>
             </div>

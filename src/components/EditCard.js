@@ -4,7 +4,8 @@ import CardForm from './CardForm';
 class EditCard extends Component {
   static propTypes = {
     cardCallbacks: PropTypes.object,
-    cards: PropTypes.arrayOf(PropTypes.object)
+    cards: PropTypes.arrayOf(PropTypes.object),
+    params: PropTypes.object
   };
 
   constructor () {
@@ -15,7 +16,7 @@ class EditCard extends Component {
   }
 
   componentWillMount () {
-    const card = this.props.cards.find((card) => card.id === this.props.params.card_id);
+    const card = this.props.cards.find((card) => card.id === parseInt(this.props.params.card_id));
     this.setState({...card});
   }
 
