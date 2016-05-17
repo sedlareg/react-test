@@ -1,5 +1,6 @@
 /* @flow */
 import React, {Component, PropTypes} from 'react';
+import BankContainer from 'containers/BankContainer';
 
 export class Home extends Component {
   static propTypes = {
@@ -10,7 +11,7 @@ export class Home extends Component {
     return (
       <div className='container'>
         <h1>{this.props.route.title}</h1>
-        {this.props.children}
+        <BankContainer />
       </div>
   );
   }

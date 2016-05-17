@@ -77,8 +77,9 @@ class CardForm extends Component {
                 type='color'
                 defaultValue='#ff0000'/>
             </div>
-            <div className='actions'>
-              <button type='submit'>{this.props.buttonLabel}</button>
+            <div className='submit'>
+              <input type='submit' className='button-blue' value={this.props.buttonLabel} />
+              <div className='ease'></div>
             </div>
           </form>
         </div>

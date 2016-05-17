@@ -16,7 +16,7 @@ import EditCard from 'components/EditCard';
 
 export default (store) => (
   <Route path='/' component={CoreLayout}>
-    <IndexRoute component={Home} title='Home' />
+    <IndexRoute component={Home} title='Flux Transaction' />
     <Route title='Kanban Board' component={KanbanBoardContainer}>
       <Route path='board' component={KanbanBoard}>
         {/* Add the route, nested where we want the UI to nest */}

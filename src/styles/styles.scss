@@ -226,9 +226,9 @@ menu {
 }
 
 .myButton {
-  -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  -moz-box-shadow: inset 0 1px 0 0 #ffffff;
+  -webkit-box-shadow: inset 0 1px 0 0 #ffffff;
+  box-shadow: inset 0 1px 0 0 #ffffff;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9));
   background: -moz-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
   background: -webkit-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
@@ -244,12 +244,11 @@ menu {
   display: inline-block;
   cursor: pointer;
   color: #666666;
-  font-family: Arial;
   font-size: 15px;
   font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #ffffff;
+  text-shadow: 0 1px 0 #ffffff;
 }
 
 .myButton:hover {
@@ -287,8 +286,9 @@ menu {
 .card.big {
   position: absolute;
   width: 640px;
+  height: 75%;
   margin: auto;
-  top: 1%;
+  top: 0;
   left: 0;
   bottom: 100px;
   right: 0;
@@ -329,7 +329,6 @@ menu {
   width:100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid lightgrey;
   outline: none;
@@ -408,6 +407,72 @@ menu {
   position: relative;
   top: 10px;
   margin-right: 10px;
+}
+
+.button-blue{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  float:left;
+  width: 100%;
+  border: #f0f0f0 solid 2px;
+  cursor:pointer;
+  background-color: #fff;
+  color: #3498db;
+  font-size:24px;
+  padding:22px 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  margin-top:-4px;
+  font-weight:700;
+  &:hover {
+    background-color: rgba(0,0,0,0);
+    color: #fff;
+  }
+}
+
+.submit {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  left: 0;
+  &:hover {
+    color: #3498db;
+  }
+}
+
+.ease {
+  width: 0;
+  height: 74px;
+  background-color: #3498db;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.submit:hover .ease {
+  width:100%;
+  background-color: #3498db;
+}
+
+.atm{
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #000;
+  text-align: center;
+  margin: 10px auto 0 10px;
+  padding: 20px;
+}
+.atm input{
+  font-size:25px;
+  width: 180px
+}
+
+.atm button{
+  margin: 5px;
+  padding: 20px;
 }
 
 @media only screen and (max-width: 640px) {

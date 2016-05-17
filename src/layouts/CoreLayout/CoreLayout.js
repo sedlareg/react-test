@@ -13,6 +13,7 @@ export class CoreLayout extends React.Component {
         <header>App</header>
         <menu>
           <ul>
+            <li><Link to='/' className='myButton' activeClassName='active'>Flux Transaction</Link></li>
             <li><Link to='/board' className='myButton' activeClassName='active'>Kanban Board</Link></li>
             <li><Link to='/contact' className='myButton' activeClassName='active'>Contact</Link></li>
             <li><Link to='/shop' className='myButton' activeClassName='active'>ShoppingList</Link></li>
